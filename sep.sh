@@ -9,7 +9,7 @@
             do
                 BranchName=($(echo $i | sed 's/.*;//'))
                 commit=($(echo $i | sed 's/;.*//'))
-                git checkout -B "main" "origin/main"
+                git checkout -B "master" "origin/master"
                 git checkout -B "feature/${BranchName}" "origin/feature/${BranchName}" || git checkout -B "feature/${BranchName}"
                 git cherry-pick ${commit} --keep-redundant-commits --strategy-option recursive -X theirs
                 git diff --name-only --diff-filter=U | xargs git rm -f
